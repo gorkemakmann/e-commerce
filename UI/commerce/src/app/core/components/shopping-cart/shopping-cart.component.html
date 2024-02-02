@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col"><h4><b>Shopping Cart</b></h4></div>
+          <div class="col align-self-center text-right text-muted">{{cartItems.length}} items</div>
+        </div>
+      </div>
+      <div class="row border-top border-bottom" *ngFor="let item of cartItems">
+        <div class="row main align-items-center">
+          <div class="col-2"><img class="img-fluid" src="{{item?.mainVisual?.imgUrl}}"></div>
+          <div class="col col-width">
+            <div class="row text-muted">{{item?.currentCategory?.name}}</div>
+            <div class="row">{{item.name}}</div>
+          </div>
+          <div class="col col-width" (click)="getCurrentItem(item)">
+            <div class="quantity">
+                <i class="fa-solid fa-minus" (click)="decreaseItem(item)" *ngIf="item.quantity > 1"></i>
+                <i class="fa-solid fa-trash" (click)="removeFromCart(item)" *ngIf="item.quantity <= 1"></i>
+              <input type="number" name="quantity" class="quantity-input" min="0" [(ngModel)]="item.quantity" disabled (ngModelChange)="validateInput(item);" (input)="updateCartItem(item)">
+              <i class="fa-solid fa-plus" (click)="increaseItem(item)"></i>
+            </div>
+          </div>
+          <div class="col col-width">&euro; {{item.price}} x {{item.quantity}}</div>
+          <div class="col col-width">&euro; {{  item.price*item.quantity | number : '1.2-2'}}
+            </div>
+          <div class="col col-width remove-item"> <span class="close" (click)="removeFromCart(item)">&#10005;</span></div>
+
+        </div>
+      </div>
+
+      <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted" [routerLink]="['/home']">Back to shop</span></div>
+    </div>
+    <div class="col-md-4 summary">
+      <div><h5><b>Summary</b></h5></div>
+      <hr>
+      <div class="row">
+        <div class="col" style="padding-left:0;">ITEMS {{cartItems.length}}</div>
+        <div class="col text-right">&euro; {{oldTotalPrice | number : '1.2-2'}}</div>
+      </div>
+      <form>
+        <p>SHIPPING</p>
+        <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
+        <p>GIVE CODE</p>
+        <input id="code" placeholder="Enter your code" [(ngModel)]="couponCode" [ngModelOptions]="{standalone: true}" (keyup.enter)="getCoupon()">
+      </form>
+      <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+        <div class="col" *ngIf="!couponApplied">TOTAL PRICE:</div>
+        <div class="col text-right" *ngIf="!couponApplied">&euro; {{oldTotalPrice + 5 | number : '1.2-2'}}</div>
+        <div class="coupon-applied" *ngIf="couponApplied">
+          <div class="col-4">TOTAL PRICE:</div>
+          <div class="col-3" style="display: flex; justify-content: center"><span class="coupon-old-price">&euro;{{oldTotalPrice + 5 | number : '1.2-2'}}</span></div>
+          <div class="col-1" style="display:flex; justify-content: center"><span>-</span></div>
+          <div class="col-4" ><span class="coupon-new-price"></span>&euro; {{totalPrice + 5 | number : '1.2-2'}}</div>
+        </div>
+      </div>
+      <div class="row" *ngIf="couponApplied">
+        <div class="col" ><span class="coupon-new-price">{{couponAppliedText}}</span></div>
+      </div>
+      <button class="btn" (click)="createOrder()">COMPLETE ORDER</button>
+      <div class="order-message">
+        <p class="order-message-text" *ngIf="orderSuccessMessage != ''">{{orderSuccessMessage}}</p>
+        <p class="order-message-text" *ngIf="orderErrorMessage != ''">{{orderErrorMessage}}</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

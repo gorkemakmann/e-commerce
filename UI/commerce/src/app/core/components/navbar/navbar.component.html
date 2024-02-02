@@ -1,0 +1,62 @@
+
+
+<div class="nav-main">
+
+  <nav class="navbar navbar-expand-lg main-navbar">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/home']"><img src="assets/logo.png" alt="Earth Store" class="brand-image"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item nav-item-text">
+            <a class="nav-link active nav-link-single" aria-current="page" [routerLink]="['/home']">Home</a>
+          </li>
+          <li class="nav-item nav-item-text">
+            <a class="nav-link active nav-link-single" aria-current="page" [routerLink]="['/about']">About</a>
+          </li>
+          <li class="nav-item nav-item-text">
+            <a class="nav-link active nav-link-single" aria-current="page" [routerLink]="['/shop']">Shop</a>
+          </li>
+<!--          <li class="nav-item nav-item-text">-->
+<!--            <a class="nav-link active nav-link-single" aria-current="page" href="#">Contact</a>-->
+<!--          </li>-->
+          <div class="nav-item-icons">
+            <li class="nav-item">
+              <a class="nav-link active nav-link-single " aria-current="page" [routerLink]="['/shopping-cart']">
+                <i class="fa-solid fa-bag-shopping fa-lg icon-badge">
+<!--                  <span class="badge">10+</span>-->
+                  <span class="position-absolute translate-middle badge rounded-pill">{{numberOfCartItems}}</span>
+                </i>
+              </a>
+            </li>
+            <li class="nav-item nav-item-user-icon" *ngIf="!authService.isUserLoggedIn()">
+              <a class="nav-link active nav-link-single" aria-current="page" style="cursor:pointer;">
+                <i class="fa-solid fa-user fa-lg" [routerLink]="['/login']"></i>
+              </a>
+            </li>
+            <li class="nav-item nav-item-user-icon" *ngIf="authService.isUserLoggedIn()">
+              <a class="nav-link active nav-link-single" aria-current="page" style="cursor:pointer;">
+                <i class="fa-solid fa-arrow-right-from-bracket" (click)="logout()"></i>
+              </a>
+            </li>
+          </div>
+<!--          <li class="nav-item nav-item-user-icon" *ngIf="authService.isUserLoggedIn()">-->
+<!--            {{authService.userInfo?.username}}-->
+<!--          </li>-->
+          <!--        <li class="nav-item dropdown">-->
+          <!--          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+          <!--            Admin-->
+          <!--          </a>-->
+          <!--          <ul class="dropdown-menu">-->
+          <!--            <li><a class="dropdown-item" [routerLink]="['/admin/categories']">Categories</a></li>-->
+          <!--&lt;!&ndash;            <li><hr class="dropdown-divider"></li>&ndash;&gt;-->
+          <!--&lt;!&ndash;            <li><a class="dropdown-item" href="#">Something else here</a></li>&ndash;&gt;-->
+          <!--          </ul>-->
+          <!--        </li>-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,138 @@
+.call-to-action-wrapper {
+  margin: 2rem 0;
+  position: relative;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  background-image: url('../../../../assets/gift.jpg');
+}
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+.main-text {
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.secondary-text {
+  color: #585858;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 28.9px;
+  text-align: center;
+}
+.purchase-button {
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+}
+
+.purchase-button-back:hover {
+  background: var(--hover-color);
+  cursor: pointer;
+}
+
+.purchase-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.purchase-button-back {
+  background: var(--secondary-color);
+  width: fit-content;
+  padding: 15px 37px;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 1400px) {
+  .call-to-action-wrapper {
+    height:30rem;
+  }
+  .content-container {
+    height: 30rem;
+  }
+  .main-text {
+    font-size: 33px;
+    line-height: 28.9px;
+    letter-spacing: 4.92px;
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1400px) {
+  .call-to-action-wrapper {
+    height:25rem;
+  }
+  .content-container {
+    height: 25rem;
+  }
+  .main-text {
+    font-size: 33px;
+    line-height: 25.3px;
+    letter-spacing: 4px;
+  }
+  .purchase-button {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 2.8px;
+  }
+  .purchase-button-back {
+    padding: 15px 28px;
+  }
+}
+
+
+@media (min-width: 800px) and (max-width: 1100px) {
+  .call-to-action-wrapper {
+    height:22rem;
+  }
+  .content-container {
+    height: 22rem;
+  }
+  .main-text {
+    font-size: 28px;
+    line-height: 20.3px;
+    letter-spacing: 3.52px;
+  }
+  .purchase-button {
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 2.5px;
+  }
+  .purchase-button-back {
+    padding: 12px 20px;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .call-to-action-wrapper {
+    height:17rem;
+  }
+  .content-container {
+    height: 17rem;
+  }
+  .purchase-button {
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 2px;
+  }
+  .purchase-button-back {
+    padding: 12px 18px;
+  }
+}

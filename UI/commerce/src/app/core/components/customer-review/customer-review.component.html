@@ -1,0 +1,21 @@
+<div class="section-wrapper" *ngIf="randomReviews.length > 0">
+  <h2 class="review-section-title" >What Our Customers Say</h2>
+  <div class="customer-review-section-wrapper">
+    <div class="customer-review-section">
+      <div class="customer-review"  *ngFor="let review of randomReviews">
+        <div class="customer-review-icon">
+          <i class="fa-solid fa-quote-left fa-2xl"></i>
+        </div>
+        <div class="customer-review-text">
+          <span class="customer-review-text-in">{{review.reviewMessage}}</span>
+        </div>
+        <div class="customer-review-avatar">
+          <img src="/assets/earth-store-testimonial-avatar-img.jpeg" alt="Avatar" class="avatar">
+        </div>
+        <div class="customer-review-name">
+          <span class="customer-review-name-text">{{review?.userFirstName}} {{review?.userLastName}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="section-wrapper">
+
+  <div class="product-cell-section" *ngIf="!isCalled">
+    <div class="product-cell col-md-4 col-xs-4" *ngFor="let item of randomItems; let i = index">
+      <div class="product-image" [routerLink]="['/product', item.id]">
+        <img src="{{item?.mainVisual?.imgUrl}}" alt="{{item.name}}">
+      </div>
+      <div class="product-summary">
+        <div class="product-category" >
+          <span class="product-category-text" >{{item?.currentCategory?.name}}</span>
+        </div>
+        <div class="product-name">
+          <h2 class="product-name-text" [routerLink]="['/product', item.id]">{{item.name}}</h2>
+        </div>
+        <div class="product-description">
+          <p class="product-description-text" [routerLink]="['/product', item.id]">{{item.description}}</p>
+        </div>
+        <div class="product-price">
+          <span class="product-price-text">{{item.price}}$</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-cell-section" *ngIf="isCalled">
+    <div class="product-cell col-md-4 col-xs-4">
+      <div class="product-image" [routerLink]="['/product', product.id]">
+        <img src="{{product?.mainVisual?.imgUrl}}" alt="{{product.name}}">
+      </div>
+      <div class="product-summary">
+        <div class="product-category" >
+          <span class="product-category-text" >{{product?.currentCategory?.name}}</span>
+        </div>
+        <div class="product-name">
+          <h2 class="product-name-text" [routerLink]="['/product', product.id]">{{product.name}}</h2>
+        </div>
+<!--        <div class="product-description">-->
+<!--          <p class="product-description-text" [routerLink]="['/product', product.id]">{{product.description}}</p>-->
+<!--        </div>-->
+        <div class="product-price">
+          <span class="product-price-text">{{product.price}}$</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

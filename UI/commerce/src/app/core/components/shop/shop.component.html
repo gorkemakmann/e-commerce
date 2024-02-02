@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="search">
+        <label for="inputSearch" class="form-label">Search for an item</label>
+        <input type="text" id="inputSearch" class="form-control" aria-describedby="passwordHelpBlock" [(ngModel)]="searchTerm" (input)="searchItem()">
+      </div>
+      <div class="categories">
+        <h2 class="category-title">Categories</h2>
+        <div class="category-names">
+          <ul class="category-list">
+            <li class="category-list-item" *ngFor="let category of allCategories">
+              <span class="category-item" (click)="getItemByCategoryId(category.id)" style="cursor:pointer;">
+                {{category.name}}
+              </span>
+              <span class="category-item-count category-item" (click)="getItemByCategoryId(category.id)" style="cursor: pointer"> ({{category.totalItemCount}})</span>
+            </li>
+            <li class="category-list-item">
+              <span class="category-item" (click)="getAllItems(true)" style="cursor:pointer;">
+                All
+              </span>
+              <span class="category-item-count category-item"> ({{allItemCount}})</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 items">
+      <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple"
+      >
+        <p style="font-size: 30px; color: black">Loading...</p>
+      </ngx-spinner>
+      <div class="row mb-4">
+        <h1 class="shop-text">Shop</h1>
+      </div>
+      <div class="row d-flex">
+        <p class="col-7 item-count-showing col-md-6">Showing {{currentPage * apiPageSize - apiPageSize}}-{{currentPage * apiPageSize}} of {{totalItemCount}} items</p>
+        <select class="col-5"><option class="text-muted col-md-6">Default sorting</option></select>
+      </div>
+      <div class="product-cells row">
+        <div class="product-cell col-md-4" *ngFor="let item of allItems">
+          <div class="">
+            <app-product-cell [product]="item" [isCalled]="true"></app-product-cell>
+          </div>
+        </div>
+<!--        <nav aria-label="...">-->
+<!--          <ul class="pagination">-->
+<!--            <li class="page-item disabled">-->
+<!--              <a class="page-link" href="#" tabindex="-1">Previous</a>-->
+<!--            </li>-->
+<!--&lt;!&ndash;            <li class="page-item"><a class="page-link" href="#">1</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="page-item active">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            <li class="page-item"><a class="page-link" href="#">3</a></li>&ndash;&gt;-->
+<!--            <li class="page-item" *ngFor="let index of getPageNumbers(); let i = index"><a class="page-link" href="#">{{index + 1}}</a></li>-->
+<!--            <li class="page-item">-->
+<!--              <a class="page-link" href="#">Next</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </nav>-->
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item" *ngIf="currentPage > 1">
+              <a class="page-link"  (click)="changePage(currentPage - 1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item" *ngFor="let index of getPageNumbers(); let i = index">
+              <a class="page-link"  (click)="changePage(index + 1)" [class.active]="currentPage === index + 1">
+                {{ index + 1 }}
+              </a>
+            </li>
+            <li class="page-item" *ngIf="currentPage < totalPages">
+              <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+

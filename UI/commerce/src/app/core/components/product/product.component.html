@@ -1,0 +1,38 @@
+
+<div class="main-wrapper">
+  <div class="product">
+    <div class="product-wrapper">
+      <div class="col-6 product-image-wrapper">
+        <img src="{{item?.mainVisual?.imgUrl}}" alt="product-image" class="product-image">
+      </div>
+      <div class="col-6 product-info-wrapper">
+        <div class="product-category">
+          <a class="product-category-text">{{item?.currentCategory?.name}}</a>
+        </div>
+        <div class="product-name">
+          <h1 class="product-name-text">{{item.name}}</h1>
+        </div>
+        <div class="product-price">
+          <bdi class="product-price-text">{{item.price}}$</bdi>
+        </div>
+        <div class="product-description">
+          <p class="product-description-text">
+            {{item.description}}
+          </p>
+        </div>
+        <div class="add-to-cart">
+          <input type="number" class="add-to-cart-quantity" [(ngModel)]="quantity">
+          <span class="add-to-cart-button-back">
+        <a class="add-to-cart-button" (click)="addToCart()">Add to Cart</a>
+      </span>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  <div class="product-description">-->
+<!--    <div class="product-description-wrapper">-->
+<!--    </div>-->
+<!--  </div>-->
+
+</div>
+

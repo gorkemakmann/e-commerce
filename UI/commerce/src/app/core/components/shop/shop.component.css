@@ -1,0 +1,58 @@
+.container {
+  margin: 10em;
+}
+.product-cells {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-cell {
+  flex: 0 0 33.33%; /* This ensures each cell takes up one-third of the container */
+  max-width: 33.33%; /* Prevents items from growing beyond one-third of the container */
+}
+
+.shop-text {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 84px;
+  color: var(--primary-color);
+}
+
+.item-count-showing {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 17px;
+  color: #585858;
+}
+
+.items {
+  padding-left: 4em;
+  border-left: 1px solid var(--breaker-border-color);
+}
+
+.category-list {
+  list-style: none;
+}
+.category-title {
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 20.4px;
+  line-height: 26.52px;
+}
+
+.category-item {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 34px;
+}
+
+.category-list-item {
+  display: flex;
+}
+
+.search {
+  margin-bottom: 1em;
+}
